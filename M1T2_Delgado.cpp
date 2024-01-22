@@ -18,10 +18,8 @@ int main() {
     char name[25];
     cin.get(name,25);
 
-
     //Respond
     cout << "Nice to meet you, " << name << endl << endl;
-
 
     return 0;
 }

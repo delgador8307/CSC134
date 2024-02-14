@@ -12,29 +12,118 @@ Rowan Delgado
 using namespace std;
 
 // make int trans(transaction type, user name, account balance, account number)
+int trans(int trans_type,char name_ch[25],double balance,int acc_num){
+
     //check transaction type
 
-    //if withdraw or deposit 
-        //ask transaction ammount
+    if (trans_type == 1){
+        double trans_ammount = 0;
+        //ask withdrawl ammount
+        cout << "How much would you like to withdraw? $";
+        cin >> trans_ammount;
+
+        //check if withdrawl is legal
+        if (trans_ammount<=balance){
+
+            //calculate new balance
+            balance = balance-trans_ammount;
+
+            //display account summary
+            cout << endl << "--------------------" << endl;
+            cout << name_ch << endl << acc_num << endl << "$" << balance;
+            cout << endl << "--------------------" << endl;
+
+            //ask if more transactions
+            cout << "Would you like to make another transaction(input number to choose transaction)" << endl;
+            cout << "0.\tNo Furhter Transactions" << endl;
+            cout << "1.\tWithdrawl" << endl;
+            cout << "2.\tDeposit" << endl << endl;
+            cin >> trans_type;
+
+            //call trans
+            int done = trans(trans_type,name_ch,balance,acc_num);
+
+            return 0;
+        }
+        if (trans_ammount>balance){
+            //ask if they would like to withdraw maximum possible ammount
+            string answer;
+            cout << "We cannot complete the transaction as requested.\nWould you like to withdraw the maximum ammount of $" << balance << "?" << "\nY/N : ";
+            cin >> answer;
+            cout << answer;
+
+            //if yes witdraw
+            if (answer == "Y"){
+                //set balance to 0
+                balance = 0;
+
+                //show account summary
+                cout << endl << "--------------------" << endl;
+                cout << name_ch << endl << acc_num << endl << "$" << balance;
+                cout << endl << "--------------------" << endl;
+
+                //ask if more transactions
+                cout << "Would you like to make another transaction(input number to choose transaction)" << endl;
+                cout << "0.\tNo Furhter Transactions" << endl;
+                cout << "1.\tWithdrawl" << endl;
+                cout << "2.\tDeposit" << endl << endl;
+                cin >> trans_type;
+
+                //call trans
+                int done = trans(trans_type,name_ch,balance,acc_num);
+
+                return 0;
+
+
+            }
+            if (answer == "N"){
+                //say thanks for coming
+                cout << "Thanks for coming.";
+
+                return 0;
+            }
+
+        }
+    }
+    if (trans_type == 2){
+        double trans_ammount = 0;
+        //ask withdrawl ammount
+        cout << "How much would you like to deposit? $";
+        cin >> trans_ammount;
 
         //calculate new balance
+        balance = balance+trans_ammount;
 
         //display account summary
+        cout << endl << "--------------------" << endl;
+        cout << name_ch << endl << acc_num << endl << "$" << balance;
+        cout << endl << "--------------------" << endl;
 
         //ask if more transactions
+        cout << "Would you like to make another transaction(input number to choose transaction)" << endl;
+        cout << "0.\tNo Furhter Transactions" << endl;
+        cout << "1.\tWithdrawl" << endl;
+        cout << "2.\tDeposit" << endl << endl;
+        cin >> trans_type;
 
         //call trans
+        int done = trans(trans_type,name_ch,balance,acc_num);
 
-        //return 0
-    // if no transaction
-        //say thanks for coming
-
-        //return 0
-
+        return 0;
+        
+    }
+    if (trans_type == 0){
+       //say thanks for coming
+        cout << "Thanks for coming.";
+        return 0;
+    }
+}
 
 
 int main() {
     //fix output for money
+    cout << setprecision(2) << fixed;
+
 
     //make Variables
     char name_ch[25];
@@ -68,7 +157,7 @@ int main() {
     cin >> trans_type;
 
     //call trans
-    //int done = trans(trans_type,name_ch,balance,acc_num);
+    int done = trans(trans_type,name_ch,balance,acc_num);
 
 
 

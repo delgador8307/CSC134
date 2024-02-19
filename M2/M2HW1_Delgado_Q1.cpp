@@ -50,7 +50,6 @@ int trans(int trans_type,char name_ch[25],double balance,int acc_num){
             string answer;
             cout << "We cannot complete the transaction as requested.\nWould you like to withdraw the maximum ammount of $" << balance << "?" << "\nY/N : ";
             cin >> answer;
-            cout << answer;
 
             //if yes witdraw
             if (answer == "Y"){

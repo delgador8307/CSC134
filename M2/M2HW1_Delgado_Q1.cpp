@@ -12,7 +12,7 @@ Rowan Delgado
 using namespace std;
 
 // make int trans(transaction type, user name, account balance, account number)
-int trans(int trans_type,char name_ch[25],double balance,int acc_num){
+void trans(int trans_type,char name_ch[25],double balance,int acc_num){
 
     //check transaction type
 
@@ -41,9 +41,9 @@ int trans(int trans_type,char name_ch[25],double balance,int acc_num){
             cin >> trans_type;
 
             //call trans
-            int done = trans(trans_type,name_ch,balance,acc_num);
+            trans(trans_type,name_ch,balance,acc_num);
 
-            return 0;
+            return ;
         }
         if (trans_ammount>balance){
             //ask if they would like to withdraw maximum possible ammount
@@ -69,9 +69,9 @@ int trans(int trans_type,char name_ch[25],double balance,int acc_num){
                 cin >> trans_type;
 
                 //call trans
-                int done = trans(trans_type,name_ch,balance,acc_num);
+                trans(trans_type,name_ch,balance,acc_num);
 
-                return 0;
+                return ;
 
 
             }
@@ -79,7 +79,7 @@ int trans(int trans_type,char name_ch[25],double balance,int acc_num){
                 //say thanks for coming
                 cout << "Thanks for coming.";
 
-                return 0;
+                return ;
             }
 
         }
@@ -106,16 +106,18 @@ int trans(int trans_type,char name_ch[25],double balance,int acc_num){
         cin >> trans_type;
 
         //call trans
-        int done = trans(trans_type,name_ch,balance,acc_num);
+        trans(trans_type,name_ch,balance,acc_num);
 
-        return 0;
+        return ;
         
     }
     if (trans_type == 0){
        //say thanks for coming
         cout << "Thanks for coming.";
-        return 0;
+        return ;
     }
+
+    return ;
 }
 
 
@@ -140,7 +142,9 @@ int main() {
     //TODO name to number
 
     //generate account number from name
-    srand(12);
+    //srand(12);
+    // just trying something - AN
+    srand((int)name_ch[0]);
     acc_num = rand() % 899999 + 100000;
 
     //show account summary
@@ -156,7 +160,7 @@ int main() {
     cin >> trans_type;
 
     //call trans
-    int done = trans(trans_type,name_ch,balance,acc_num);
+    trans(trans_type,name_ch,balance,acc_num);
 
 
 

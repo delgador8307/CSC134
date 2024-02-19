@@ -29,7 +29,7 @@ int main(){
     door_car = rand() % 3 + 1;
 
     //ask which door they choose
-    cout << "Welcome to the Monty Hall Hall"
+    cout << "Welcome to the Monty Hall Hall";
 
     //get answer
 
